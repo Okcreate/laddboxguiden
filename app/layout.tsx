@@ -2,9 +2,13 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 export const metadata = {
-  title: "LaddboxGuiden – Hitta certifierade laddboxinstallatörer i Sverige",
+  title: "LaddboxGuiden | Hitta certifierade laddboxinstallatörer i Sverige",
   description:
-    "Jämför certifierade installatörer av laddboxar i hela Sverige. Läs recensioner, jämför priser och hitta rätt installatör nära dig.",
+    "Jämför certifierade installatörer av laddboxar i hela Sverige.",
+
+  verification: {
+    google: "e_0xJsIbsISTtrwEhUsou3qSn9m2MUjrN2qYUP2FEaQ"
+  }
 }
 
 const geistSans = Geist({
