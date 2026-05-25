@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 export const metadata = {
   title: "LaddboxGuiden | Hitta certifierade laddboxinstallatörer i Sverige",
+  
   description:
     "Jämför certifierade installatörer av laddboxar i hela Sverige.",
 
