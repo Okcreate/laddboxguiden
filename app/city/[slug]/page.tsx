@@ -6,20 +6,38 @@ type Props = {
   params: Promise<{ slug: string }>
 }
 
-export async function generateMetadata(
-  { params }: Props
-): Promise<Metadata> {
+export async function generateStaticParams() {
+  return [
+    { slug: "stockholm" },
+    { slug: "goteborg" },
+    { slug: "malmo" },
+    { slug: "uppsala" },
+    { slug: "vasteras" },
+    { slug: "orebro" },
+    { slug: "linkoping" },
+    { slug: "jonkoping" },
+    { slug: "helsingborg" },
+    { slug: "lund" },
+  ]
+}
 
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>
+}) {
   const { slug } = await params
 
-  const cityName =
+  const city =
     slug.charAt(0).toUpperCase() + slug.slice(1)
 
   return {
-    title: `Laddboxinstallatörer i ${cityName} | LaddboxGuiden`,
-    description: `Jämför certifierade installatörer av laddboxar i ${cityName}.`,
+    title: `Laddboxinstallatörer i ${city} | LaddboxGuiden`,
+    description: `Jämför certifierade installatörer av laddboxar i ${city}. Hitta bästa pris och recensioner.`,
   }
 }
+
+
 
 export default async function CityPage({
   params,
@@ -43,12 +61,13 @@ export default async function CityPage({
   return (
     <main className="max-w-7xl mx-auto px-6 py-20">
 
-      <h1 className="text-5xl font-bold mb-6 capitalize">
+      <h1 className="text-5xl font-bold mb-4 capitalize">
         Laddboxinstallatörer i {slug}
       </h1>
 
       <p className="text-gray-600 mt-4 mb-10 max-w-3xl">
-        Jämför certifierade installatörer av laddboxar i {slug}.
+        Här hittar du certifierade installatörer av laddboxar i {slug}.
+      Jämför omdömen, priser och tjänster för att hitta rätt företag.
       </p>
 
       <div className="grid md:grid-cols-3 gap-6">
