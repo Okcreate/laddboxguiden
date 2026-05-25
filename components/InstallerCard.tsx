@@ -19,6 +19,16 @@ rating,
 reviews_count,
 slug,
 }: InstallerCardProps) {
+const slug = company_name
+  .toLowerCase()
+  .replace(/å/g, 'a')
+  .replace(/ä/g, 'a')
+  .replace(/ö/g, 'o')
+  .replace(/&/g, 'och')
+  .replace(/[^a-z0-9\s-]/g, '')
+  .replace(/\s+/g, '-')
+  .replace(/-+/g, '-')
+
 
   return (
     <div className="group bg-white border border-slate-200 rounded-[32px] p-7 shadow-sm hover:shadow-2xl hover:-translate-y-1 transition duration-300">

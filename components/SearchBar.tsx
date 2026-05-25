@@ -10,7 +10,13 @@ export default function SearchBar() {
   const handleSearch = () => {
     if (!city) return
 
-    router.push(`/city/${city.toLowerCase()}`)
+    router.push(
+  `/city/${city
+    .toLowerCase()
+    .replaceAll('ö', 'o')
+    .replaceAll('ä', 'a')
+    .replaceAll('å', 'a')}`
+)
   }
 
   return (
@@ -51,7 +57,13 @@ export default function SearchBar() {
             <button
               key={city}
               onClick={() =>
-                router.push(`/city/${city.toLowerCase()}`)
+                router.push(
+  `/city/${city
+    .toLowerCase()
+    .replaceAll('ö', 'o')
+    .replaceAll('ä', 'a')
+    .replaceAll('å', 'a')}`
+)
               }
               className="bg-slate-100 hover:bg-slate-200 transition rounded-full px-4 py-2 text-sm"
             >
