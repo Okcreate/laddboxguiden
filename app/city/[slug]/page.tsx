@@ -1,6 +1,6 @@
 import { supabase } from '@/lib/supabase'
 import InstallerCard from '@/components/InstallerCard'
-import type { Metadata } from "next";
+import type { Metadata } from 'next'
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -17,35 +17,42 @@ export async function generateMetadata(
 
   return {
     title: `Laddboxinstallatörer i ${cityName} | LaddboxGuiden`,
-    description: `Jämför certifierade installatörer av laddboxar i ${cityName}. Hitta företag, recensioner och laddboxlösningar nära dig.`,
+    description: `Jämför certifierade installatörer av laddboxar i ${cityName}.`,
   }
 }
 
 export default async function CityPage({
   params,
-}: {
-  params: Promise<{ slug: string }>
-}) {
+}: Props) {
+
   const { slug } = await params
 
-  const { data } = await supabase
+  const { data, error } = await supabase
     .from('installers')
     .select('*')
-   .ilike('city', `%${slug}%`)
-   console.log(data)
+    .ilike('city', `%${slug}%`)
+
+  if (error) {
+    return (
+      <div className="p-10">
+        Kunde inte hämta installatörer
+      </div>
+    )
+  }
 
   return (
     <main className="max-w-7xl mx-auto px-6 py-20">
-      <h1 className="text-5xl font-bold mb-12 capitalize">
+
+      <h1 className="text-5xl font-bold mb-6 capitalize">
         Laddboxinstallatörer i {slug}
       </h1>
-      <p className="text-gray-600 mt-4 mb-8 max-w-3xl">
-  Jämför certifierade installatörer av laddboxar i {slug}. 
-  Hitta företag som installerar Easee, Zaptec och Tesla-laddare 
-  för villa, BRF och företag.
-</p>
+
+      <p className="text-gray-600 mt-4 mb-10 max-w-3xl">
+        Jämför certifierade installatörer av laddboxar i {slug}.
+      </p>
 
       <div className="grid md:grid-cols-3 gap-6">
+
         {data?.map((installer: any) => (
           <InstallerCard
             key={installer.id}
@@ -54,9 +61,10 @@ export default async function CityPage({
             description={installer.description}
             logo_url={installer.logo_url}
             rating={installer.rating}
-reviews_count={installer.reviews_count}
+            reviews_count={installer.reviews_count}
           />
         ))}
+
       </div>
     </main>
   )
