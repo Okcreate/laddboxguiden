@@ -26,14 +26,19 @@ export async function generateMetadata({
 }: {
   params: Promise<{ slug: string }>
 }) {
-  const { slug } = await params
+const { slug } = await params
 
-  const city =
-    slug.charAt(0).toUpperCase() + slug.slice(1)
+const cityName = decodeURIComponent(slug)
+  .replaceAll('goteborg', 'Göteborg')
+  .replaceAll('malmo', 'Malmö')
+  .replaceAll('vasteras', 'Västerås')
+  .replaceAll('orebro', 'Örebro')
+  .replaceAll('jonkoping', 'Jönköping')
+  .replaceAll('linkoping', 'Linköping')
 
   return {
-    title: `Laddboxinstallatörer i ${city} | LaddboxGuiden`,
-    description: `Jämför certifierade installatörer av laddboxar i ${city}. Hitta bästa pris och recensioner.`,
+    title: `Laddboxinstallatörer i ${cityName} | LaddboxGuiden`,
+    description: `Jämför certifierade installatörer av laddboxar i ${cityName}. Hitta bästa pris och recensioner.`,
   }
 }
 
@@ -45,10 +50,18 @@ export default async function CityPage({
 
   const { slug } = await params
 
-  const { data, error } = await supabase
-    .from('installers')
-    .select('*')
-    .ilike('city', `%${slug}%`)
+  const cityName = decodeURIComponent(slug)
+  .replaceAll('goteborg', 'Göteborg')
+  .replaceAll('malmo', 'Malmö')
+  .replaceAll('vasteras', 'Västerås')
+  .replaceAll('orebro', 'Örebro')
+  .replaceAll('jonkoping', 'Jönköping')
+  .replaceAll('linkoping', 'Linköping')
+
+const { data, error } = await supabase
+  .from('installers')
+  .select('*')
+  .ilike('city', `%${slug}%`)
 
   if (error) {
     return (
@@ -62,7 +75,7 @@ export default async function CityPage({
     <main className="max-w-7xl mx-auto px-6 py-20">
 
       <h1 className="text-5xl font-bold mb-4 capitalize">
-        Laddboxinstallatörer i {slug}
+        Laddboxinstallatörer i {cityName}
       </h1>
 
       <p className="text-gray-600 mt-4 mb-10 max-w-3xl">
