@@ -1,6 +1,23 @@
 import LeadForm from '@/components/LeadForm'
 import { supabase } from '@/lib/supabase'
 
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>
+}) {
+  const { slug } = await params
+
+  const company = slug
+    .replace(/-/g, ' ')
+    .replace(/\b\w/g, (l) => l.toUpperCase())
+
+  return {
+    title: `${company} | Laddboxinstallatör`,
+    description: `Läs om ${company}. Jämför recensioner, laddboxar och kontaktuppgifter.`,
+  }
+}
+
 export default async function InstallerPage({
   params,
 }: {
@@ -37,6 +54,14 @@ export default async function InstallerPage({
 
               <p className="text-slate-300 mt-3 text-xl">
                 {installer.city}
+<div className="flex items-center gap-2 mt-4">
+  <span className="text-yellow-400">★★★★★</span>
+
+  <span className="text-slate-300">
+    {installer.rating} ({installer.reviews_count} recensioner)
+  </span>
+</div>
+
               </p>
             </div>
           </div>
@@ -55,6 +80,19 @@ export default async function InstallerPage({
 
               <p className="text-slate-600 text-lg leading-relaxed">
                 {installer.description}
+<div className="mt-10">
+  <h3 className="text-2xl font-bold mb-4">
+    Varför välja {installer.company_name}?
+  </h3>
+
+  <ul className="space-y-3 text-slate-600">
+    <li>✅ Certifierad installatör</li>
+    <li>✅ Installation i {installer.city}</li>
+    <li>✅ Hjälp med grön teknik-avdrag</li>
+    <li>✅ Installation av populära laddboxar</li>
+  </ul>
+</div>
+
               </p>
             </div>
           </div>
@@ -87,6 +125,21 @@ export default async function InstallerPage({
           </div>
         </div>
       </section>
+<section className="max-w-6xl mx-auto px-6 pb-20">
+  <div className="bg-white rounded-3xl p-10 shadow-sm">
+    <h3 className="text-2xl font-bold mb-6">
+      Fler installatörer i {installer.city}
+    </h3>
+
+    <a
+      href={`/city/${installer.city.toLowerCase()}`}
+      className="text-blue-600 hover:underline"
+    >
+      Se alla installatörer i {installer.city}
+    </a>
+  </div>
+</section>
+
     </main>
   )
 }
