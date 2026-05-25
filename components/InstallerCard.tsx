@@ -1,6 +1,7 @@
 import Link from 'next/link'
 
 interface InstallerCardProps {
+  slug: string
   company_name: string
   city: string
   description: string
@@ -16,13 +17,8 @@ export default function InstallerCard({
 logo_url,
 rating,
 reviews_count,
+slug,
 }: InstallerCardProps) {
-  const slug = company_name
-    .toLowerCase()
-    .replaceAll(' ', '-')
-    .replaceAll('ö', 'o')
-    .replaceAll('å', 'a')
-    .replaceAll('ä', 'a')
 
   return (
     <div className="group bg-white border border-slate-200 rounded-[32px] p-7 shadow-sm hover:shadow-2xl hover:-translate-y-1 transition duration-300">

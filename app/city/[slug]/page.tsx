@@ -75,6 +75,7 @@ export default async function CityPage({
         {data?.map((installer: any) => (
           <InstallerCard
             key={installer.id}
+            slug={installer.slug}
             company_name={installer.company_name}
             city={installer.city}
             description={installer.description}
