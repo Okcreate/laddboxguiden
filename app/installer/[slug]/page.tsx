@@ -1,3 +1,4 @@
+import Script from 'next/script'
 import LeadForm from '@/components/LeadForm'
 import { supabase } from '@/lib/supabase'
 
@@ -31,16 +32,42 @@ export default async function InstallerPage({
     .eq('slug', slug)
     .single()
 
-  if (!installer) {
-    return (
-      <div className="p-20 text-center">
-        Företaget hittades inte.
-      </div>
-    )
-  }
+if (!installer) {
+  return (
+    <div className="p-20 text-center">
+      Företaget hittades inte.
+    </div>
+  )
+}
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Electrician",
+  name: installer.company_name,
+  image: installer.logo_url || "",
+  telephone: installer.phone || "",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: installer.city,
+    addressCountry: "SE",
+  },
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: installer.rating || 4.8,
+    reviewCount: installer.reviews_count || 1,
+  },
+}
+    
 
   return (
     <main className="min-h-screen bg-slate-50">
+      <Script
+  id="schema"
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{
+    __html: JSON.stringify(schema),
+  }}
+/>
       {/* Hero */}
       <section className="bg-slate-950 text-white py-24 px-6">
         <div className="max-w-6xl mx-auto">
