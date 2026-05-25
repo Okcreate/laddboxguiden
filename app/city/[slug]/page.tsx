@@ -1,6 +1,19 @@
+import { Metadata } from "next"
 import { supabase } from '@/lib/supabase'
 import InstallerCard from '@/components/InstallerCard'
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string }
+}): Promise<Metadata> {
+  const city =
+    params.slug.charAt(0).toUpperCase() + params.slug.slice(1)
 
+  return {
+    title: `Laddboxinstallatörer i ${city} | LaddboxGuiden`,
+    description: `Hitta certifierade laddboxinstallatörer i ${city}. Jämför företag, recensioner och priser.`,
+  }
+}
 
 export default async function CityPage({
   params,
