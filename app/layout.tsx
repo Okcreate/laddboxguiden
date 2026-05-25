@@ -8,7 +8,7 @@ export const metadata = {
     "Jämför certifierade installatörer av laddboxar i hela Sverige.",
 
   verification: {
-    google: "e_0xJsIbsISTtrwEhUsou3qSn9m2MUjrN2qYUP2FEaQ"
+    google: "e_0xJslbsISTtrwEhUsou3qSn9m2MUjrN2qYUP2FEaQ"
   }
 }
 
