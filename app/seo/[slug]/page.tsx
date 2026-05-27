@@ -5,12 +5,32 @@ type Props = {
 }
 
 export async function generateStaticParams() {
-  return [
-    { slug: 'easee-installator-stockholm' },
-    { slug: 'easee-installator-goteborg' },
-    { slug: 'zaptec-malmo' },
-    { slug: 'laddbox-villa-goteborg' },
+
+  const brands = [
+    'easee',
+    'zaptec',
+    'charge-amps',
   ]
+
+  const cities = [
+    'stockholm',
+    'goteborg',
+    'malmo',
+    'lund',
+    'uppsala',
+  ]
+
+  const pages = []
+
+  for (const brand of brands) {
+    for (const city of cities) {
+      pages.push({
+        slug: `${brand}-installator-${city}`,
+      })
+    }
+  }
+
+  return pages
 }
 export async function generateMetadata({
   params,
