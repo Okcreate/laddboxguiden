@@ -228,26 +228,28 @@ export default async function SeoPage({
     Installatörer i {cityName}
   </h2>
 
-  <div className="grid md:grid-cols-3 gap-6">
+<div className="grid md:grid-cols-3 gap-6">
 
-    {installers?.map((installer: any) => (
+  {installers?.map((installer: any) => (
 
-      <div
-        key={installer.id}
-        className="bg-white rounded-2xl p-6 shadow-sm"
-      >
-        <h3 className="text-xl font-bold">
-          {installer.company_name}
-        </h3>
+    <a
+      key={installer.id}
+      href={`/installers/${installer.slug}`}
+      className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition block"
+    >
+      <h3 className="text-xl font-bold">
+        {installer.company_name}
+      </h3>
 
-        <p className="text-slate-600 mt-2">
-          {installer.city}
-        </p>
-      </div>
+      <p className="text-slate-600 mt-2">
+        {installer.city}
+      </p>
 
-    ))}
+    </a>
 
-  </div>
+  ))}
+
+</div>
 
 </section>
 
