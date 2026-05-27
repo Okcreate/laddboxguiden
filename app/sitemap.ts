@@ -3,7 +3,7 @@ import { supabase } from '@/lib/supabase'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
-  const baseUrl = 'https://laddboxguiden.vercel.app'
+  const baseUrl = 'https://laddboxportalen.se'
 
   const { data } = await supabase
     .from('installers')
