@@ -28,12 +28,29 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     lastModified: new Date(),
   }))
 
-  const seoPages = [
-    'easee-installator-stockholm',
-    'easee-installator-goteborg',
-    'zaptec-malmo',
-    'laddbox-villa-goteborg',
-  ]
+const brands = [
+  'easee',
+  'zaptec',
+  'charge-amps',
+]
+
+const seoCities = [
+  'stockholm',
+  'goteborg',
+  'malmo',
+  'lund',
+  'uppsala',
+]
+
+const seoPages = []
+
+for (const brand of brands) {
+  for (const city of seoCities) {
+    seoPages.push(
+      `${brand}-installator-${city}`
+    )
+  }
+}
 
   const seoUrls = seoPages.map((slug) => ({
     url: `${baseUrl}/seo/${slug}`,
