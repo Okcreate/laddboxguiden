@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Script from 'next/script'
 import { supabase } from '@/lib/supabase'
 import InstallerCard from '@/components/InstallerCard'
 
@@ -115,6 +116,18 @@ export default async function SeoPage({
     .replaceAll('-', ' ')
     .replace(/\b\w/g, (l) => l.toUpperCase())
 
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: `${brandName} installatör ${cityName}`,
+    areaServed: cityName,
+    serviceType: "Laddboxinstallation",
+    provider: {
+      "@type": "Organization",
+      name: "LaddboxGuiden",
+    },
+  }
+
   const relatedLinks = [
     `/seo/${brand}-installator-stockholm`,
     `/seo/${brand}-installator-goteborg`,
@@ -125,13 +138,21 @@ export default async function SeoPage({
   ]
 
   const { data: installers } = await supabase
-  .from('installers')
-  .select('*')
-  .ilike('city', `%${cityName}%`)
-  .limit(6)
+    .from('installers')
+    .select('*')
+    .ilike('city', `%${cityName}%`)
+    .limit(6)
 
   return (
     <main className="max-w-5xl mx-auto px-6 py-20">
+
+      <Script
+        id="schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(schema),
+        }}
+      />
 
       <h1 className="text-5xl font-bold mb-6">
         {title}
@@ -224,34 +245,34 @@ export default async function SeoPage({
 
       <section className="mt-20">
 
-  <h2 className="text-3xl font-bold mb-8">
-    Installatörer i {cityName}
-  </h2>
+        <h2 className="text-3xl font-bold mb-8">
+          Installatörer i {cityName}
+        </h2>
 
-<div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-3 gap-6">
 
-  {installers?.map((installer: any) => (
+          {installers?.map((installer: any) => (
 
-    <a
-      key={installer.id}
-      href={`/installer/${installer.slug}`}
-      className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition block"
-    >
-      <h3 className="text-xl font-bold">
-        {installer.company_name}
-      </h3>
+            <a
+              key={installer.id}
+              href={`/installer/${installer.slug}`}
+              className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition block"
+            >
+              <h3 className="text-xl font-bold">
+                {installer.company_name}
+              </h3>
 
-      <p className="text-slate-600 mt-2">
-        {installer.city}
-      </p>
+              <p className="text-slate-600 mt-2">
+                {installer.city}
+              </p>
 
-    </a>
+            </a>
 
-  ))}
+          ))}
 
-</div>
+        </div>
 
-</section>
+      </section>
 
     </main>
   )
