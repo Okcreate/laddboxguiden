@@ -128,6 +128,29 @@ export default async function SeoPage({
     },
   }
 
+  const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Vad kostar installation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Kostnaden varierar beroende på bostad och laddbox."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Finns grönt avdrag?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja, många installationer omfattas av grönt teknik-avdrag."
+      }
+    }
+  ]
+}
+
   const relatedLinks = [
     `/seo/${brand}-installator-stockholm`,
     `/seo/${brand}-installator-goteborg`,
@@ -153,6 +176,16 @@ export default async function SeoPage({
           __html: JSON.stringify(schema),
         }}
       />
+
+
+
+<Script
+  id="faq-schema"
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{
+    __html: JSON.stringify(faqSchema),
+  }}
+/>
 
       <h1 className="text-5xl font-bold mb-6">
         {title}
