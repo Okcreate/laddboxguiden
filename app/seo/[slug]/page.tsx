@@ -6,19 +6,49 @@ type Props = {
 
 export async function generateStaticParams() {
 
-  const brands = [
-    'easee',
-    'zaptec',
-    'charge-amps',
-  ]
+const brands = [
+  'easee',
+  'zaptec',
+  'charge-amps',
+  'tesla',
+  'wallbox',
+  'abb',
+  'garo',
+  'defa',
+  'ctek',
+  'eo',
+]
 
-  const cities = [
-    'stockholm',
-    'goteborg',
-    'malmo',
-    'lund',
-    'uppsala',
-  ]
+ const cities = [
+  'stockholm',
+  'goteborg',
+  'malmo',
+  'uppsala',
+  'vasteras',
+  'orebro',
+  'linkoping',
+  'jonkoping',
+  'helsingborg',
+  'lund',
+  'boras',
+  'gavle',
+  'halmstad',
+  'kalmar',
+  'karlstad',
+  'kiruna',
+  'kristianstad',
+  'norrkoping',
+  'skovde',
+  'sundsvall',
+  'trollhattan',
+  'umea',
+  'vaxjo',
+  'eskilstuna',
+  'falun',
+  'varberg',
+  'ystad',
+  'visby',
+]
 
   const pages = []
 
