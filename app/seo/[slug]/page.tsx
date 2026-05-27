@@ -84,7 +84,7 @@ export async function generateStaticParams() {
 
 function formatText(text: string) {
 
-  return text
+  const formatted = text
     .replaceAll('goteborg', 'Göteborg')
     .replaceAll('malmo', 'Malmö')
     .replaceAll('vasteras', 'Västerås')
@@ -96,7 +96,13 @@ function formatText(text: string) {
     .replaceAll('uppsala', 'Uppsala')
     .replaceAll('lund', 'Lund')
     .replaceAll('-', ' ')
-    .replace(/\b[a-zåäö]/g, (l) => l.toUpperCase())
+
+  return formatted
+    .split(' ')
+    .map(word =>
+      word.charAt(0).toUpperCase() + word.slice(1)
+    )
+    .join(' ')
 
 }
 
@@ -308,7 +314,7 @@ export default async function SeoPage({
   const { data: installers } = await supabase
     .from('installers')
     .select('*')
-    .ilike('city', `%${cityName}%`)
+    .ilike('city', `%${citySlug}%`)
     .limit(6)
 
   return (
