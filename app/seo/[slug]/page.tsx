@@ -109,6 +109,15 @@ export default async function SeoPage({
     .replaceAll('-', ' ')
     .replace(/\b\w/g, (l) => l.toUpperCase())
 
+    const relatedLinks = [
+  `/seo/${brand}-installator-stockholm`,
+  `/seo/${brand}-installator-goteborg`,
+  `/seo/${brand}-installator-malmo`,
+  `/seo/${brand}-installator-uppsala`,
+  `/seo/${brand}-installator-helsingborg`,
+  `/seo/${brand}-installator-linkoping`,
+]
+
   return (
     <main className="max-w-5xl mx-auto px-6 py-20">
 
@@ -180,28 +189,24 @@ export default async function SeoPage({
 
         <div className="grid md:grid-cols-3 gap-6">
 
-          <a
-            href="/seo/easee-installator-stockholm"
-            className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition"
-          >
-            Easee installatör Stockholm
-          </a>
+  {relatedLinks.map((link) => (
 
-          <a
-            href="/seo/zaptec-installator-goteborg"
-            className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition"
-          >
-            Zaptec installatör Göteborg
-          </a>
+    <a
+      key={link}
+      href={link}
+      className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition"
+    >
+      {link
+        .replace('/seo/', '')
+        .replaceAll('-', ' ')
+        .replace(/\b\w/g, (l) => l.toUpperCase())
+      }
 
-          <a
-            href="/seo/charge-amps-installator-malmo"
-            className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition"
-          >
-            Charge Amps Malmö
-          </a>
+    </a>
 
-        </div>
+  ))}
+
+</div>
 
       </section>
 
