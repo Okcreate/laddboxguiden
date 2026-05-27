@@ -230,6 +230,54 @@ export default function HomePage() {
   </div>
 </section>
       <Footer />
+    <section className="max-w-6xl mx-auto px-6 py-20">
+  <h2 className="text-4xl font-bold mb-10">
+    Populära guider
+  </h2>
+
+  <div className="grid md:grid-cols-3 gap-6">
+
+    <a
+      href="/seo/easee-installator-stockholm"
+      className="bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition"
+    >
+      <h3 className="text-2xl font-bold">
+        Easee installatör Stockholm
+      </h3>
+
+      <p className="text-slate-600 mt-4">
+        Jämför installatörer av Easee laddbox i Stockholm.
+      </p>
+    </a>
+
+    <a
+      href="/seo/zaptec-malmo"
+      className="bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition"
+    >
+      <h3 className="text-2xl font-bold">
+        Zaptec Malmö
+      </h3>
+
+      <p className="text-slate-600 mt-4">
+        Hitta certifierade Zaptec-installatörer i Malmö.
+      </p>
+    </a>
+
+    <a
+      href="/seo/laddbox-villa-goteborg"
+      className="bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition"
+    >
+      <h3 className="text-2xl font-bold">
+        Laddbox villa Göteborg
+      </h3>
+
+      <p className="text-slate-600 mt-4">
+        Installation av laddbox för villa i Göteborg.
+      </p>
+    </a>
+
+  </div>
+</section>
     </main>
   )
 }
