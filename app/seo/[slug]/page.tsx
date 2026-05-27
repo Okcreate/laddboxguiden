@@ -245,6 +245,72 @@ export default async function SeoPage({
     ],
   }
 
+  const relatedBrands = [
+    'easee',
+    'zaptec',
+    'tesla',
+    'wallbox',
+  ]
+
+  const relatedCities = [
+    'stockholm',
+    'goteborg',
+    'malmo',
+  ]
+
+  const relatedPageTypes = [
+    'installator',
+    'laddbox-villa',
+    'laddbox-brf',
+  ]
+
+  const relatedLinks = []
+
+  for (const relatedBrand of relatedBrands) {
+
+    if (relatedBrand !== brand) {
+
+      relatedLinks.push({
+        href: `/seo/${relatedBrand}-${pageType}-${citySlug}`,
+        label: `${relatedBrand} ${pageType} ${cityName}`
+          .replaceAll('-', ' ')
+          .replace(/\b\w/g, (l) => l.toUpperCase()),
+      })
+
+    }
+
+  }
+
+  for (const relatedType of relatedPageTypes) {
+
+    if (relatedType !== pageType) {
+
+      relatedLinks.push({
+        href: `/seo/${brand}-${relatedType}-${citySlug}`,
+        label: `${brandName} ${relatedType} ${cityName}`
+          .replaceAll('-', ' ')
+          .replace(/\b\w/g, (l) => l.toUpperCase()),
+      })
+
+    }
+
+  }
+
+  for (const relatedCity of relatedCities) {
+
+    if (relatedCity !== citySlug) {
+
+      relatedLinks.push({
+        href: `/seo/${brand}-${pageType}-${relatedCity}`,
+        label: `${brandName} ${pageType} ${relatedCity}`
+          .replaceAll('-', ' ')
+          .replace(/\b\w/g, (l) => l.toUpperCase()),
+      })
+
+    }
+
+  }
+
   const { data: installers } = await supabase
     .from('installers')
     .select('*')
@@ -344,6 +410,30 @@ export default async function SeoPage({
               Ja, många installationer omfattas av grönt teknik-avdrag.
             </p>
           </div>
+
+        </div>
+
+      </section>
+
+      <section className="mt-20">
+
+        <h2 className="text-3xl font-bold mb-8">
+          Relaterade guider
+        </h2>
+
+        <div className="grid md:grid-cols-3 gap-6">
+
+          {relatedLinks.map((link) => (
+
+            <a
+              key={link.href}
+              href={link.href}
+              className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition block"
+            >
+              {link.label}
+            </a>
+
+          ))}
 
         </div>
 
