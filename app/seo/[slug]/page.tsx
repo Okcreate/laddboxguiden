@@ -64,6 +64,7 @@ export async function generateStaticParams() {
   const pages = []
 
   for (const brand of brands) {
+
     for (const city of cities) {
 
       for (const type of pageTypes) {
@@ -75,9 +76,28 @@ export async function generateStaticParams() {
       }
 
     }
+
   }
 
   return pages
+}
+
+function formatText(text: string) {
+
+  return text
+    .replaceAll('goteborg', 'Göteborg')
+    .replaceAll('malmo', 'Malmö')
+    .replaceAll('vasteras', 'Västerås')
+    .replaceAll('orebro', 'Örebro')
+    .replaceAll('jonkoping', 'Jönköping')
+    .replaceAll('linkoping', 'Linköping')
+    .replaceAll('helsingborg', 'Helsingborg')
+    .replaceAll('stockholm', 'Stockholm')
+    .replaceAll('uppsala', 'Uppsala')
+    .replaceAll('lund', 'Lund')
+    .replaceAll('-', ' ')
+    .replace(/\b[a-zåäö]/g, (l) => l.toUpperCase())
+
 }
 
 export async function generateMetadata({
@@ -86,9 +106,7 @@ export async function generateMetadata({
 
   const { slug } = await params
 
-  const title = slug
-    .replaceAll('-', ' ')
-    .replace(/\b\w/g, (l) => l.toUpperCase())
+  const title = formatText(slug)
 
   return {
     title: `${title} | LaddboxGuiden`,
@@ -105,30 +123,14 @@ export default async function SeoPage({
   const parts = slug.split('-')
 
   const brand = parts[0]
+
   const citySlug = decodeURIComponent(parts[parts.length - 1])
 
-  const cityName = citySlug
-    .replaceAll('goteborg', 'Göteborg')
-    .replaceAll('malmo', 'Malmö')
-    .replaceAll('vasteras', 'Västerås')
-    .replaceAll('orebro', 'Örebro')
-    .replaceAll('jonkoping', 'Jönköping')
-    .replaceAll('linkoping', 'Linköping')
-    .replaceAll('stockholm', 'Stockholm')
-    .replaceAll('uppsala', 'Uppsala')
-    .replaceAll('lund', 'Lund')
-    .replaceAll('helsingborg', 'Helsingborg')
+  const cityName = formatText(citySlug)
 
-  const brandName = brand
-    .replaceAll('easee', 'Easee')
-    .replaceAll('zaptec', 'Zaptec')
-    .replaceAll('charge-amps', 'Charge Amps')
-    .replaceAll('wallbox', 'Wallbox')
-    .replaceAll('tesla', 'Tesla')
+  const brandName = formatText(brand)
 
-  const title = slug
-    .replaceAll('-', ' ')
-    .replace(/\b\w/g, (l) => l.toUpperCase())
+  const title = formatText(slug)
 
   const pageType = parts.slice(1, -1).join('-')
 
@@ -270,9 +272,7 @@ export default async function SeoPage({
 
       relatedLinks.push({
         href: `/seo/${relatedBrand}-${pageType}-${citySlug}`,
-        label: `${relatedBrand} ${pageType} ${cityName}`
-          .replaceAll('-', ' ')
-          .replace(/\b\w/g, (l) => l.toUpperCase()),
+        label: formatText(`${relatedBrand}-${pageType}-${citySlug}`),
       })
 
     }
@@ -285,9 +285,7 @@ export default async function SeoPage({
 
       relatedLinks.push({
         href: `/seo/${brand}-${relatedType}-${citySlug}`,
-        label: `${brandName} ${relatedType} ${cityName}`
-          .replaceAll('-', ' ')
-          .replace(/\b\w/g, (l) => l.toUpperCase()),
+        label: formatText(`${brand}-${relatedType}-${citySlug}`),
       })
 
     }
@@ -300,9 +298,7 @@ export default async function SeoPage({
 
       relatedLinks.push({
         href: `/seo/${brand}-${pageType}-${relatedCity}`,
-        label: `${brandName} ${pageType} ${relatedCity}`
-          .replaceAll('-', ' ')
-          .replace(/\b\w/g, (l) => l.toUpperCase()),
+        label: formatText(`${brand}-${pageType}-${relatedCity}`),
       })
 
     }
