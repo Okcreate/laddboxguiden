@@ -234,7 +234,7 @@ export default async function SeoPage({
 
     <a
       key={installer.id}
-      href={`/installers/${installer.slug}`}
+      href={`/installer/${installer.slug}`}
       className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition block"
     >
       <h3 className="text-xl font-bold">
