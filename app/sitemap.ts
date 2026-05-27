@@ -28,59 +28,76 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     lastModified: new Date(),
   }))
 
-const brands = [
-  'easee',
-  'zaptec',
-  'charge-amps',
-  'tesla',
-  'wallbox',
-  'abb',
-  'garo',
-  'defa',
-  'ctek',
-  'eo',
-]
+  const brands = [
+    'easee',
+    'zaptec',
+    'charge-amps',
+    'tesla',
+    'wallbox',
+    'abb',
+    'garo',
+    'defa',
+    'ctek',
+    'eo',
+  ]
 
-const seoCities = [
-  'stockholm',
-  'goteborg',
-  'malmo',
-  'uppsala',
-  'vasteras',
-  'orebro',
-  'linkoping',
-  'jonkoping',
-  'helsingborg',
-  'lund',
-  'boras',
-  'gavle',
-  'halmstad',
-  'kalmar',
-  'karlstad',
-  'kiruna',
-  'kristianstad',
-  'norrkoping',
-  'skovde',
-  'sundsvall',
-  'trollhattan',
-  'umea',
-  'vaxjo',
-  'eskilstuna',
-  'falun',
-  'varberg',
-  'ystad',
-  'visby',
-]
+  const seoCities = [
+    'stockholm',
+    'goteborg',
+    'malmo',
+    'uppsala',
+    'vasteras',
+    'orebro',
+    'linkoping',
+    'jonkoping',
+    'helsingborg',
+    'lund',
+    'boras',
+    'gavle',
+    'halmstad',
+    'kalmar',
+    'karlstad',
+    'kiruna',
+    'kristianstad',
+    'norrkoping',
+    'skovde',
+    'sundsvall',
+    'trollhattan',
+    'umea',
+    'vaxjo',
+    'eskilstuna',
+    'falun',
+    'varberg',
+    'ystad',
+    'visby',
+  ]
 
-const seoPages = []
+  const pageTypes = [
+    'installator',
+    'laddbox-villa',
+    'laddbox-brf',
+    'laddbox-foretag',
+    'laddbox-med-lastbalansering',
+    'basta-laddbox',
+  ]
 
-for (const brand of brands) {
-  for (const city of seoCities) {
-    seoPages.push(
-      `${brand}-installator-${city}`
-    )
+  const seoPages = []
+
+  for (const brand of brands) {
+
+    for (const city of seoCities) {
+
+      for (const type of pageTypes) {
+
+        seoPages.push(
+          `${brand}-${type}-${city}`
+        )
+
+      }
+
+    }
+
   }
-}
 
   const seoUrls = seoPages.map((slug) => ({
     url: `${baseUrl}/seo/${slug}`,
