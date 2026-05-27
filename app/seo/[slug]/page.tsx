@@ -139,6 +139,37 @@ export default async function SeoPage({
           </div>
         </div>
       </div>
+<section className="mt-20">
+  <h2 className="text-3xl font-bold mb-8">
+    Relaterade guider
+  </h2>
+
+  <div className="grid md:grid-cols-3 gap-6">
+
+    <a
+      href="/seo/easee-installator-stockholm"
+      className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition"
+    >
+      Easee installatör Stockholm
+    </a>
+
+    <a
+      href="/seo/zaptec-installator-goteborg"
+      className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition"
+    >
+      Zaptec installatör Göteborg
+    </a>
+
+    <a
+      href="/seo/charge-amps-installator-malmo"
+      className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition"
+    >
+      Charge Amps Malmö
+    </a>
+
+  </div>
+</section>
+
     </main>
   )
 }
