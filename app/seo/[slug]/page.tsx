@@ -4,6 +4,14 @@ type Props = {
   params: Promise<{ slug: string }>
 }
 
+export async function generateStaticParams() {
+  return [
+    { slug: 'easee-installator-stockholm' },
+    { slug: 'easee-installator-goteborg' },
+    { slug: 'zaptec-malmo' },
+    { slug: 'laddbox-villa-goteborg' },
+  ]
+}
 export async function generateMetadata({
   params,
 }: Props) {
