@@ -130,9 +130,7 @@ export default async function SeoPage({
     .replaceAll('-', ' ')
     .replace(/\b\w/g, (l) => l.toUpperCase())
 
-  const pageType = slug
-    .replace(`${brand}-`, '')
-    .replace(`-${citySlug}`, '')
+  const pageType = parts.slice(1, -1).join('-')
 
   let intro = ''
   let content = ''
