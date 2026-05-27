@@ -1,3 +1,4 @@
+import Script from 'next/script'
 import { supabase } from '@/lib/supabase'
 import InstallerCard from '@/components/InstallerCard'
 import type { Metadata } from 'next'
@@ -70,10 +71,37 @@ const { data, error } = await supabase
       </div>
     )
   }
-
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: `Vad kostar installation av laddbox i ${cityName}?`,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: `Installation av laddbox i ${cityName} kostar vanligtvis mellan 10 000 och 25 000 kronor.`,
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Behöver man en certifierad installatör?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Ja, installation av laddbox ska utföras av certifierad elektriker.",
+      },
+    },
+  ],
+}
   return (
     <main className="max-w-7xl mx-auto px-6 py-20">
-
+<Script
+  id="faq-schema"
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{
+    __html: JSON.stringify(faqSchema),
+  }}
+/>
       <h1 className="text-5xl font-bold mb-4 capitalize">
         Laddboxinstallatörer i {cityName}
       </h1>
@@ -99,6 +127,45 @@ const { data, error } = await supabase
         ))}
 
       </div>
+      <section className="mt-20">
+  <h2 className="text-3xl font-bold mb-10">
+    Vanliga frågor om laddboxar i {cityName}
+  </h2>
+
+  <div className="space-y-6">
+
+    <div className="bg-white rounded-2xl p-6 shadow-sm">
+      <h3 className="font-bold text-xl mb-2">
+        Vad kostar installation av laddbox i {cityName}?
+      </h3>
+
+      <p className="text-slate-600">
+        Priset för installation av laddbox i {cityName} ligger vanligtvis mellan 10 000 och 25 000 kronor beroende på laddbox och installation.
+      </p>
+    </div>
+
+    <div className="bg-white rounded-2xl p-6 shadow-sm">
+      <h3 className="font-bold text-xl mb-2">
+        Behöver man en certifierad installatör?
+      </h3>
+
+      <p className="text-slate-600">
+        Ja, installation av laddbox ska utföras av certifierad elektriker enligt svenska regler.
+      </p>
+    </div>
+
+    <div className="bg-white rounded-2xl p-6 shadow-sm">
+      <h3 className="font-bold text-xl mb-2">
+        Vilken laddbox är mest populär?
+      </h3>
+
+      <p className="text-slate-600">
+        Easee och Zaptec är två av de mest populära laddboxarna i Sverige.
+      </p>
+    </div>
+
+  </div>
+</section>
     </main>
   )
 }
