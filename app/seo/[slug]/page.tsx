@@ -105,7 +105,7 @@ export default async function SeoPage({
   const parts = slug.split('-')
 
   const brand = parts[0]
-  const citySlug = parts[parts.length - 1]
+  const citySlug = decodeURIComponent(parts[parts.length - 1])
 
   const cityName = citySlug
     .replaceAll('goteborg', 'Göteborg')
