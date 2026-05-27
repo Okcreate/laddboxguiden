@@ -92,7 +92,7 @@ export async function generateMetadata({
 
   return {
     title: `${title} | LaddboxGuiden`,
-    description: `Jämför installatörer och laddboxar för ${title}.`,
+    description: `Jämför laddboxar, installatörer och priser för ${title}.`,
   }
 }
 
@@ -130,6 +130,86 @@ export default async function SeoPage({
     .replaceAll('-', ' ')
     .replace(/\b\w/g, (l) => l.toUpperCase())
 
+  const pageType = slug
+    .replace(`${brand}-`, '')
+    .replace(`-${citySlug}`, '')
+
+  let intro = ''
+  let content = ''
+
+  if (pageType === 'laddbox-villa') {
+
+    intro = `Jämför ${brandName}-laddboxar för villa i ${cityName}.`
+
+    content = `
+    Villaägare i ${cityName} väljer allt oftare smarta laddboxar från ${brandName}.
+    Med rätt installation får du snabbare och säkrare laddning hemma.
+
+    Många väljer laddboxar med lastbalansering för att skydda husets elsystem
+    och optimera laddningen under dygnets billigaste timmar.
+    `
+
+  } else if (pageType === 'laddbox-brf') {
+
+    intro = `Hitta ${brandName}-lösningar för BRF i ${cityName}.`
+
+    content = `
+    Bostadsrättsföreningar i ${cityName} installerar allt oftare laddboxar
+    för boende och besökare.
+
+    Många BRF:er väljer smart lastbalansering och skalbara laddlösningar
+    för framtidens elbilar.
+    `
+
+  } else if (pageType === 'laddbox-foretag') {
+
+    intro = `Jämför ${brandName}-laddboxar för företag i ${cityName}.`
+
+    content = `
+    Företag i ${cityName} investerar allt oftare i laddinfrastruktur
+    för anställda och företagsbilar.
+
+    Moderna laddlösningar kan bidra till bättre hållbarhetsprofil
+    och framtidssäkra verksamheten.
+    `
+
+  } else if (pageType === 'laddbox-med-lastbalansering') {
+
+    intro = `Hitta ${brandName}-laddboxar med lastbalansering i ${cityName}.`
+
+    content = `
+    Lastbalansering hjälper fastigheter i ${cityName}
+    att undvika överbelastning av elsystemet.
+
+    Många väljer smart dynamisk lastbalansering
+    för att optimera energiförbrukningen.
+    `
+
+  } else if (pageType === 'basta-laddbox') {
+
+    intro = `Jämför bästa ${brandName}-laddboxarna i ${cityName}.`
+
+    content = `
+    Många villaägare jämför idag olika laddboxar
+    för att hitta bästa funktioner, design och smart laddning.
+
+    ${brandName} är ett populärt alternativ tack vare användarvänlighet,
+    appstyrning och energieffektivitet.
+    `
+
+  } else {
+
+    intro = `Hitta certifierade ${brandName}-installatörer i ${cityName}.`
+
+    content = `
+    Professionella installatörer i ${cityName}
+    hjälper villaägare och företag med säker installation av laddboxar.
+
+    En korrekt installation säkerställer optimal prestanda
+    och följer svenska elsäkerhetskrav.
+    `
+  }
+
   const schema = {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -148,10 +228,10 @@ export default async function SeoPage({
     mainEntity: [
       {
         "@type": "Question",
-        name: `Vad kostar ${brandName} installation i ${cityName}?`,
+        name: `Vad kostar installation av ${brandName} i ${cityName}?`,
         acceptedAnswer: {
           "@type": "Answer",
-          text: `Priset varierar beroende på fastighet och installation.`,
+          text: "Priset varierar beroende på fastighet och installation.",
         },
       },
       {
@@ -195,25 +275,13 @@ export default async function SeoPage({
       </h1>
 
       <p className="text-xl text-slate-600 leading-relaxed">
-        Hitta certifierade {brandName}-installatörer i {cityName}.
-        Jämför priser, recensioner och installation av laddboxar för villa, BRF och företag.
+        {intro}
       </p>
 
       <div className="mt-10 space-y-6 text-lg text-slate-600 leading-relaxed">
 
         <p>
-          Allt fler villaägare väljer att installera laddboxar i {cityName}.
-          Professionell installation säkerställer säker laddning och optimal prestanda.
-        </p>
-
-        <p>
-          Många väljer {brandName} tack vare smart laddning,
-          modern design och stöd för lastbalansering.
-        </p>
-
-        <p>
-          Kostnaden varierar beroende på fastighet,
-          elcentral och vald laddbox.
+          {content}
         </p>
 
       </div>
