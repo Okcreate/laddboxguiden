@@ -125,10 +125,10 @@ export default async function SeoPage({
   ]
 
   const { data: installers } = await supabase
-    .from('installers')
-    .select('*')
-    .eq('city', cityName)
-    .limit(6)
+  .from('installers')
+  .select('*')
+  .ilike('city', `%${cityName}%`)
+  .limit(6)
 
   return (
     <main className="max-w-5xl mx-auto px-6 py-20">
