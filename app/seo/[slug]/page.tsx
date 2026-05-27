@@ -1,4 +1,6 @@
 import type { Metadata } from 'next'
+import { supabase } from '@/lib/supabase'
+import InstallerCard from '@/components/InstallerCard'
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -88,15 +90,19 @@ export default async function SeoPage({
   const parts = slug.split('-')
 
   const brand = parts[0]
-  const city = parts[parts.length - 1]
+  const citySlug = parts[parts.length - 1]
 
-  const cityName = city
+  const cityName = citySlug
     .replaceAll('goteborg', 'Göteborg')
     .replaceAll('malmo', 'Malmö')
     .replaceAll('vasteras', 'Västerås')
     .replaceAll('orebro', 'Örebro')
     .replaceAll('jonkoping', 'Jönköping')
     .replaceAll('linkoping', 'Linköping')
+    .replaceAll('stockholm', 'Stockholm')
+    .replaceAll('uppsala', 'Uppsala')
+    .replaceAll('lund', 'Lund')
+    .replaceAll('helsingborg', 'Helsingborg')
 
   const brandName = brand
     .replaceAll('easee', 'Easee')
@@ -109,14 +115,20 @@ export default async function SeoPage({
     .replaceAll('-', ' ')
     .replace(/\b\w/g, (l) => l.toUpperCase())
 
-    const relatedLinks = [
-  `/seo/${brand}-installator-stockholm`,
-  `/seo/${brand}-installator-goteborg`,
-  `/seo/${brand}-installator-malmo`,
-  `/seo/${brand}-installator-uppsala`,
-  `/seo/${brand}-installator-helsingborg`,
-  `/seo/${brand}-installator-linkoping`,
-]
+  const relatedLinks = [
+    `/seo/${brand}-installator-stockholm`,
+    `/seo/${brand}-installator-goteborg`,
+    `/seo/${brand}-installator-malmo`,
+    `/seo/${brand}-installator-uppsala`,
+    `/seo/${brand}-installator-helsingborg`,
+    `/seo/${brand}-installator-linkoping`,
+  ]
+
+  const { data: installers } = await supabase
+    .from('installers')
+    .select('*')
+    .eq('city', cityName)
+    .limit(6)
 
   return (
     <main className="max-w-5xl mx-auto px-6 py-20">
@@ -189,26 +201,55 @@ export default async function SeoPage({
 
         <div className="grid md:grid-cols-3 gap-6">
 
-  {relatedLinks.map((link) => (
+          {relatedLinks.map((link) => (
 
-    <a
-      key={link}
-      href={link}
-      className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition"
-    >
-      {link
-        .replace('/seo/', '')
-        .replaceAll('-', ' ')
-        .replace(/\b\w/g, (l) => l.toUpperCase())
-      }
+            <a
+              key={link}
+              href={link}
+              className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition"
+            >
+              {link
+                .replace('/seo/', '')
+                .replaceAll('-', ' ')
+                .replace(/\b\w/g, (l) => l.toUpperCase())
+              }
 
-    </a>
+            </a>
 
-  ))}
+          ))}
 
-</div>
+        </div>
 
       </section>
+
+      <section className="mt-20">
+
+  <h2 className="text-3xl font-bold mb-8">
+    Installatörer i {cityName}
+  </h2>
+
+  <div className="grid md:grid-cols-3 gap-6">
+
+    {installers?.map((installer: any) => (
+
+      <div
+        key={installer.id}
+        className="bg-white rounded-2xl p-6 shadow-sm"
+      >
+        <h3 className="text-xl font-bold">
+          {installer.company_name}
+        </h3>
+
+        <p className="text-slate-600 mt-2">
+          {installer.city}
+        </p>
+      </div>
+
+    ))}
+
+  </div>
+
+</section>
 
     </main>
   )
