@@ -18,7 +18,7 @@ export default async function FeaturedInstallers() {
             </div>
 
             <h2 className="text-5xl font-black mt-5 tracking-tight">
-              Featured installatörer
+              Populära installatörer
             </h2>
 
             <p className="text-slate-500 text-xl mt-4 max-w-2xl mx-auto">
