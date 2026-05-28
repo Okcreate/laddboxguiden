@@ -118,6 +118,19 @@ const comparisonUrls = comparisonPages.map((slug) => ({
   lastModified: new Date(),
 }))
 
+const topplistorPages = [
+  'basta-laddbox-2026',
+  'basta-laddbox-villa',
+  'basta-laddbox-brf',
+  'basta-laddbox-lastbalansering',
+  'basta-laddbox-foretag',
+]
+
+const topplistorUrls = topplistorPages.map((slug) => ({
+  url: `${baseUrl}/topplistor/${slug}`,
+  lastModified: new Date(),
+}))
+
 return [
   {
     url: baseUrl,
@@ -127,5 +140,6 @@ return [
   ...cityUrls,
   ...seoUrls,
   ...comparisonUrls,
+  ...topplistorUrls,
 ]
 }
