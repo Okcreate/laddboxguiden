@@ -171,7 +171,109 @@ export default function HomePage() {
 
   </div>
 </section>
+{/* Popular comparisons */}
+<section className="max-w-6xl mx-auto px-6 py-20">
 
+  <h2 className="text-4xl font-bold mb-10">
+    Populära jämförelser
+  </h2>
+
+  <div className="grid md:grid-cols-3 gap-6">
+
+    <a
+      href="/compare/easee-vs-zaptec"
+      className="bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition"
+    >
+      <h3 className="text-2xl font-bold">
+        Easee vs Zaptec
+      </h3>
+
+      <p className="text-slate-600 mt-4">
+        Jämför två av Sveriges mest populära laddboxar.
+      </p>
+    </a>
+
+    <a
+      href="/compare/easee-vs-wallbox"
+      className="bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition"
+    >
+      <h3 className="text-2xl font-bold">
+        Easee vs Wallbox
+      </h3>
+
+      <p className="text-slate-600 mt-4">
+        Skillnader i smart laddning, design och funktioner.
+      </p>
+    </a>
+
+    <a
+      href="/compare/zaptec-vs-tesla"
+      className="bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition"
+    >
+      <h3 className="text-2xl font-bold">
+        Zaptec vs Tesla
+      </h3>
+
+      <p className="text-slate-600 mt-4">
+        Vilken laddbox passar bäst för villaägare?
+      </p>
+    </a>
+
+  </div>
+
+</section>
+
+{/* Top lists */}
+<section className="max-w-6xl mx-auto px-6 pb-20">
+
+  <h2 className="text-4xl font-bold mb-10">
+    Populära topplistor
+  </h2>
+
+  <div className="grid md:grid-cols-3 gap-6">
+
+    <a
+      href="/topplistor/basta-laddbox-2026"
+      className="bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition"
+    >
+      <h3 className="text-2xl font-bold">
+        Bästa Laddbox 2026
+      </h3>
+
+      <p className="text-slate-600 mt-4">
+        Våra topprankade laddboxar för villa och BRF.
+      </p>
+    </a>
+
+    <a
+      href="/topplistor/billigaste-laddboxen"
+      className="bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition"
+    >
+      <h3 className="text-2xl font-bold">
+        Billigaste laddboxen
+      </h3>
+
+      <p className="text-slate-600 mt-4">
+        Prisvärda laddboxar med smarta funktioner.
+      </p>
+    </a>
+
+    <a
+      href="/topplistor/basta-laddbox-for-tesla"
+      className="bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition"
+    >
+      <h3 className="text-2xl font-bold">
+        Bästa laddbox för Tesla
+      </h3>
+
+      <p className="text-slate-600 mt-4">
+        Populära laddboxar för Tesla-ägare i Sverige.
+      </p>
+    </a>
+
+  </div>
+
+</section>
       {/* CTA */}
       <section className="py-28 px-6">
         <div className="max-w-5xl mx-auto bg-slate-950 rounded-[40px] text-white p-14 text-center">
