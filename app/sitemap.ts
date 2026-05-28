@@ -100,17 +100,32 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }
 
   const seoUrls = seoPages.map((slug) => ({
-    url: `${baseUrl}/seo/${slug}`,
+  url: `${baseUrl}/seo/${slug}`,
+  lastModified: new Date(),
+}))
+
+const comparisonPages = [
+  'easee-vs-zaptec',
+  'easee-vs-wallbox',
+  'easee-vs-tesla',
+  'zaptec-vs-wallbox',
+  'zaptec-vs-tesla',
+  'wallbox-vs-tesla',
+]
+
+const comparisonUrls = comparisonPages.map((slug) => ({
+  url: `${baseUrl}/compare/${slug}`,
+  lastModified: new Date(),
+}))
+
+return [
+  {
+    url: baseUrl,
     lastModified: new Date(),
-  }))
+  },
 
-  return [
-    {
-      url: baseUrl,
-      lastModified: new Date(),
-    },
-
-    ...cityUrls,
-    ...seoUrls,
-  ]
+  ...cityUrls,
+  ...seoUrls,
+  ...comparisonUrls,
+]
 }
