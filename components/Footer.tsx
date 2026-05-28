@@ -6,7 +6,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="md:col-span-2">
             <div className="text-3xl font-black">
-              ⚡ LaddboxGuiden
+              ⚡ Laddboxportalen
             </div>
 
             <p className="text-slate-400 mt-6 max-w-md leading-relaxed">
@@ -44,7 +44,7 @@ export default function Footer() {
         {/* Bottom */}
         <div className="border-t border-white/10 mt-20 pt-10 flex flex-col md:flex-row items-center justify-between gap-4 text-slate-500 text-sm">
           <div>
-            © 2026 LaddboxGuiden. Alla rättigheter förbehållna.
+            © 2026 Laddboxportalen. Alla rättigheter förbehållna.
           </div>
 
           <div className="flex items-center gap-6">

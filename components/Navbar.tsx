@@ -10,7 +10,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/">
             <div className="text-2xl font-black tracking-tight text-white">
-              ⚡ LaddboxGuiden
+              ⚡ Laddboxportalen
             </div>
           </Link>
 
