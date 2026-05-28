@@ -1,14 +1,13 @@
-import Navbar from '@/components/Navbar'
+
 import Hero from '@/components/Hero'
 import SearchBar from '@/components/SearchBar'
 import InstallerCard from '@/components/InstallerCard'
-import Footer from '@/components/Footer'
 import FeaturedInstallers from '@/components/FeaturedInstallers'
 
 export default function HomePage() {
   return (
     <main className="min-h-screen bg-white">
-      <Navbar />
+      
 
       <Hero />
 
@@ -326,7 +325,7 @@ export default function HomePage() {
 
   </div>
 </section>
-      <Footer />
+      
     </main>
   )
 }
