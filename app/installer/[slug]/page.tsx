@@ -104,7 +104,7 @@ export default async function InstallerPage({
       />
 
       {/* Hero */}
-      <section className="bg-slate-950 text-white py-24 px-6">
+<section className="bg-slate-950 text-white pt-44 pb-24 px-6">
 
         <div className="max-w-6xl mx-auto">
 
