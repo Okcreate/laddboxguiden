@@ -8,12 +8,17 @@ type Props = {
 export async function generateStaticParams() {
 
   const pages = [
-    'basta-laddbox-2026',
-    'basta-laddbox-villa',
-    'basta-laddbox-brf',
-    'basta-laddbox-lastbalansering',
-    'basta-laddbox-foretag',
-  ]
+  'basta-laddbox-2026',
+  'basta-laddbox-villa',
+  'basta-laddbox-brf',
+  'basta-laddbox-lastbalansering',
+  'basta-laddbox-foretag',
+  'basta-laddbox-tesla',
+  'basta-laddbox-volvo',
+  'basta-laddbox-under-10000',
+  'basta-laddbox-app',
+  'basta-laddbox-smart-hem',
+]
 
   return pages.map((slug) => ({
     slug,
@@ -41,8 +46,16 @@ export async function generateMetadata({
   const title = formatText(slug)
 
   return {
-    title: `${title} | LaddboxGuiden`,
+    title: `${title} | Laddboxportalen`,
     description: `Jämför de bästa laddboxarna för ${title}.`,
+    alternates: {
+  canonical: `https://laddboxportalen.se/topplistor/${slug}`,
+},
+
+robots: {
+  index: true,
+  follow: true,
+},
   }
 }
 
@@ -168,6 +181,29 @@ export default async function TopplistaPage({
 
       <section className="mt-20">
 
+  <h2 className="text-3xl font-bold mb-8">
+    Så valde vi de bästa laddboxarna
+  </h2>
+
+  <div className="bg-white rounded-2xl p-8 shadow-sm">
+
+    <p className="text-lg text-slate-600 leading-relaxed mb-6">
+      När vi jämför laddboxar tittar vi på funktioner,
+      användarvänlighet, smart laddning, lastbalansering,
+      installationsmöjligheter och prisvärdhet.
+    </p>
+
+    <p className="text-lg text-slate-600 leading-relaxed">
+      Alla modeller i denna topplista är populära alternativ
+      bland svenska villaägare, bostadsrättsföreningar och företag.
+    </p>
+
+  </div>
+
+</section>
+
+      <section className="mt-20">
+
         <h2 className="text-3xl font-bold mb-10">
           Vanliga frågor
         </h2>
@@ -201,6 +237,26 @@ export default async function TopplistaPage({
         </div>
 
       </section>
+
+      <section className="mt-20">
+
+  <h2 className="text-3xl font-bold mb-8">
+    Slutsats
+  </h2>
+
+  <div className="bg-white rounded-2xl p-8 shadow-sm">
+
+    <p className="text-lg text-slate-600 leading-relaxed">
+      Easee Charge, Zaptec Go och Wallbox Pulsar Plus
+      är några av marknadens mest populära laddboxar.
+
+      Vilken modell som passar bäst beror på budget,
+      önskade funktioner och hur laddningen ska användas.
+    </p>
+
+  </div>
+
+</section>
 
       <section className="mt-20">
 
