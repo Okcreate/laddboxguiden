@@ -8,13 +8,17 @@ type Props = {
 export async function generateStaticParams() {
 
   const comparisons = [
-    'easee-vs-zaptec',
-    'easee-vs-wallbox',
-    'easee-vs-tesla',
-    'zaptec-vs-wallbox',
-    'zaptec-vs-tesla',
-    'wallbox-vs-tesla',
-  ]
+  'zaptec-go-vs-easee-charge-up',
+  'easee-charge-up-vs-wallbox-pulsar-plus',
+  'zaptec-go-vs-wallbox-pulsar-plus',
+  'zaptec-go-vs-tesla-wall-connector',
+  'easee-charge-up-vs-tesla-wall-connector',
+  'charge-amps-halo-vs-zaptec-go',
+  'charge-amps-halo-vs-easee-charge-up',
+  'garo-entity-vs-zaptec-go',
+  'defa-power-vs-easee-charge-up',
+  'abb-vs-zaptec-go',
+]
 
   return comparisons.map((slug) => ({
     slug,
@@ -39,11 +43,38 @@ export async function generateMetadata({
 
   const { slug } = await params
 
+  const parts = slug.split('-')
+
+  const brand1 = parts[0]
+  const brand2 = parts[parts.length - 1]
+
+  const brand1Name = formatName(brand1)
+  const brand2Name = formatName(brand2)
+
   const title = formatName(slug)
 
   return {
-    title: `${title} | LaddboxGuiden`,
-    description: `Jämför ${title}. Se skillnader i funktioner, pris och smart laddning.`,
+    title: `${title} | Laddboxportalen`,
+
+    description: `Jämför ${brand1Name} och ${brand2Name}. Pris, funktioner, app, lastbalansering och installation.`,
+
+    alternates: {
+      canonical: `https://laddboxportalen.se/compare/${slug}`,
+    },
+
+    robots: {
+      index: true,
+      follow: true,
+    },
+
+    openGraph: {
+      title: `${title} | Laddboxportalen`,
+      description: `Jämför ${brand1Name} och ${brand2Name}.`,
+      url: `https://laddboxportalen.se/compare/${slug}`,
+      siteName: 'Laddboxportalen',
+      locale: 'sv_SE',
+      type: 'article',
+    },
   }
 }
 
@@ -215,6 +246,27 @@ export default async function ComparePage({
         </div>
 
       </section>
+
+      <section className="mt-20">
+
+  <h2 className="text-3xl font-bold mb-8">
+    Slutsats
+  </h2>
+
+  <div className="bg-white rounded-2xl p-8 shadow-sm">
+
+    <p className="text-lg text-slate-600 leading-relaxed">
+      Både {brand1Name} och {brand2Name} är populära val bland svenska
+      villaägare. Vilken laddbox som passar bäst beror på budget,
+      installationsförutsättningar och vilka funktioner som är viktigast.
+
+      För den som prioriterar smart styrning, appfunktioner och
+      framtidssäker teknik är båda alternativen starka kandidater.
+    </p>
+
+  </div>
+
+</section>
 
       <section className="mt-20">
 
