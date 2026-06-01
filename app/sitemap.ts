@@ -105,12 +105,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 }))
 
 const comparisonPages = [
-  'easee-vs-zaptec',
-  'easee-vs-wallbox',
-  'easee-vs-tesla',
-  'zaptec-vs-wallbox',
-  'zaptec-vs-tesla',
-  'wallbox-vs-tesla',
+  'zaptec-go-vs-easee-charge-up',
+  'easee-charge-up-vs-wallbox-pulsar-plus',
+  'zaptec-go-vs-wallbox-pulsar-plus',
+  'zaptec-go-vs-tesla-wall-connector',
+  'easee-charge-up-vs-tesla-wall-connector',
+  'charge-amps-halo-vs-zaptec-go',
+  'charge-amps-halo-vs-easee-charge-up',
+  'garo-entity-vs-zaptec-go',
+  'defa-power-vs-easee-charge-up',
+  'abb-vs-zaptec-go',
 ]
 
 const comparisonUrls = comparisonPages.map((slug) => ({
