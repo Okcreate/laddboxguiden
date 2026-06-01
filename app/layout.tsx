@@ -7,14 +7,33 @@ import Footer from "@/components/Footer";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title:
-    "Laddboxportalen | Hitta certifierade laddboxinstallatörer i Sverige",
+  metadataBase: new URL("https://laddboxportalen.se"),
+
+  title: {
+    default: "Laddboxportalen | Hitta certifierade laddboxinstallatörer",
+    template: "%s | Laddboxportalen",
+  },
 
   description:
     "Jämför certifierade installatörer av laddboxar i hela Sverige.",
 
   verification: {
     google: "wt99FWG0Odk2scfgnstB3w-gadKBsks5rDhfuKts4ys",
+  },
+
+  alternates: {
+    canonical: "/",
+  },
+
+  openGraph: {
+    siteName: "Laddboxportalen",
+    locale: "sv_SE",
+    type: "website",
+  },
+
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
@@ -30,18 +49,15 @@ const geistMono = Geist_Mono({
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
-
+}) {
   return (
     <html
       lang="sv"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-
       <body className="min-h-full flex flex-col bg-slate-50">
-
         <Navbar />
 
         <main className="flex-1">
@@ -49,9 +65,7 @@ export default function RootLayout({
         </main>
 
         <Footer />
-
       </body>
-
     </html>
   );
 }

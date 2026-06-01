@@ -39,8 +39,29 @@ export async function generateMetadata({
     .replaceAll('linkoping', 'Linköping')
 
   return {
-    title: `Laddboxinstallatörer i ${cityName} | LaddboxGuiden`,
-    description: `Jämför certifierade installatörer av laddboxar i ${cityName}. Hitta bästa pris och recensioner.`,
+    title: `Laddboxinstallatörer i ${cityName}`,
+
+    description:
+      `Hitta certifierade installatörer av laddboxar i ${cityName}. Jämför företag, recensioner och tjänster.`,
+
+    alternates: {
+      canonical: `https://laddboxportalen.se/city/${slug}`,
+    },
+
+    openGraph: {
+      title: `Laddboxinstallatörer i ${cityName}`,
+      description:
+        `Jämför certifierade installatörer av laddboxar i ${cityName}.`,
+      url: `https://laddboxportalen.se/city/${slug}`,
+      siteName: "Laddboxportalen",
+      locale: "sv_SE",
+      type: "website",
+    },
+
+    robots: {
+      index: true,
+      follow: true,
+    },
   }
 }
 
