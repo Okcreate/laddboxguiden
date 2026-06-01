@@ -337,7 +337,7 @@ export default async function SeoPage({
     .limit(6)
 
   return (
-    <main className="max-w-5xl mx-auto px-6 py-20">
+    <main className="max-w-7xl mx-auto px-6 pt-40 pb-20">
 
       <Script
         id="schema"
