@@ -115,9 +115,28 @@ export async function generateMetadata({
   const title = formatText(slug)
 
   return {
-    title: `${title} | LaddboxGuiden`,
+  title: `${title} | Laddboxportalen`,
+
+  description: `Jämför laddboxar, installatörer och priser för ${title}.`,
+
+  alternates: {
+    canonical: `https://laddboxportalen.se/seo/${slug}`,
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+  },
+
+  openGraph: {
+    title: `${title} | Laddboxportalen`,
     description: `Jämför laddboxar, installatörer och priser för ${title}.`,
-  }
+    url: `https://laddboxportalen.se/seo/${slug}`,
+    siteName: 'Laddboxportalen',
+    locale: 'sv_SE',
+    type: 'website',
+  },
+}
 }
 
 export default async function SeoPage({
@@ -224,7 +243,7 @@ export default async function SeoPage({
     serviceType: "Laddboxinstallation",
     provider: {
       "@type": "Organization",
-      name: "LaddboxGuiden",
+      name: "Laddboxportalen",
     },
   }
 
@@ -349,6 +368,36 @@ export default async function SeoPage({
         <p>
           {content}
         </p>
+
+        <div className="space-y-6">
+
+  <h2 className="text-3xl font-bold">
+    Om {brandName} i {cityName}
+  </h2>
+
+  <p>
+    {brandName} är ett populärt val bland villaägare och företag i {cityName}.
+    Många väljer lösningen tack vare smart styrning, hög säkerhet och stöd
+    för framtidens elbilar.
+  </p>
+
+  <p>
+    Vid installation av laddbox i {cityName} är det viktigt att anlita en
+    certifierad installatör som kan säkerställa att anläggningen uppfyller
+    svenska elsäkerhetskrav.
+  </p>
+
+  <h2 className="text-3xl font-bold">
+    Pris för installation i {cityName}
+  </h2>
+
+  <p>
+    Kostnaden varierar beroende på fastighet, elcentral, kabeldragning och
+    vilken modell som installeras. Många hushåll kan även använda grönt
+    teknik-avdrag för att minska den totala kostnaden.
+  </p>
+
+</div>
 
       </div>
 
