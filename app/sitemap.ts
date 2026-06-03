@@ -130,8 +130,23 @@ const topplistorPages = [
   'basta-laddbox-foretag',
 ]
 
+const blogPages = [
+  'vad-kostar-en-laddbox',
+  'hur-fungerar-lastbalansering',
+  'laddbox-for-villa',
+  'laddbox-for-brf',
+  'laddbox-for-foretag',
+  'easee-charge-up-recension',
+  'zaptec-go-recension',
+]
+
 const topplistorUrls = topplistorPages.map((slug) => ({
   url: `${baseUrl}/topplistor/${slug}`,
+  lastModified: new Date(),
+}))
+
+const blogUrls = blogPages.map((slug) => ({
+  url: `${baseUrl}/blog/${slug}`,
   lastModified: new Date(),
 }))
 
@@ -145,5 +160,6 @@ return [
   ...seoUrls,
   ...comparisonUrls,
   ...topplistorUrls,
+  ...blogUrls,
 ]
 }
