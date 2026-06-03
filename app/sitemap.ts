@@ -138,6 +138,17 @@ const blogPages = [
   'laddbox-for-foretag',
   'easee-charge-up-recension',
   'zaptec-go-recension',
+
+  'gront-avdrag-laddbox',
+  'laddbox-for-tesla',
+  'laddbox-for-volvo-ex30',
+  'wallbox-pulsar-plus-recension',
+  'charge-amps-halo-recension',
+  'basta-laddbox-for-solceller',
+  'laddbox-med-appstyrning',
+  'hur-snabbt-laddar-en-laddbox',
+  'skillnad-mellan-11kw-och-22kw',
+  'kan-man-installera-laddbox-sjalv',
 ]
 
 const topplistorUrls = topplistorPages.map((slug) => ({

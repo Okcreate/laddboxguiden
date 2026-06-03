@@ -6,13 +6,24 @@ params: Promise<{ slug: string }>
 }
 
 const articles = [
-'vad-kostar-en-laddbox',
-'hur-fungerar-lastbalansering',
-'laddbox-for-villa',
-'laddbox-for-brf',
-'laddbox-for-foretag',
-'easee-charge-up-recension',
-'zaptec-go-recension',
+  'vad-kostar-en-laddbox',
+  'hur-fungerar-lastbalansering',
+  'laddbox-for-villa',
+  'laddbox-for-brf',
+  'laddbox-for-foretag',
+  'easee-charge-up-recension',
+  'zaptec-go-recension',
+
+  'gront-avdrag-laddbox',
+  'laddbox-for-tesla',
+  'laddbox-for-volvo-ex30',
+  'wallbox-pulsar-plus-recension',
+  'charge-amps-halo-recension',
+  'basta-laddbox-for-solceller',
+  'laddbox-med-appstyrning',
+  'hur-snabbt-laddar-en-laddbox',
+  'skillnad-mellan-11kw-och-22kw',
+  'kan-man-installera-laddbox-sjalv',
 ]
 
 export async function generateStaticParams() {
