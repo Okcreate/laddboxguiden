@@ -74,6 +74,38 @@ const { slug } = await params
 
 const title = formatTitle(slug)
 
+let intro = ''
+let content = ''
+
+if (slug === 'vad-kostar-en-laddbox') {
+  intro = 'Vad kostar en laddbox 2026? Här går vi igenom priser för både laddbox och installation.'
+  content = 'Priset för en laddbox ligger vanligtvis mellan 5 000 och 12 000 kronor. Med installation hamnar totalkostnaden ofta mellan 10 000 och 25 000 kronor beroende på fastighet och elcentral.'
+}
+
+else if (slug === 'hur-fungerar-lastbalansering') {
+  intro = 'Lastbalansering hjälper till att fördela elförbrukningen i fastigheten.'
+  content = 'Med lastbalansering kan laddboxen automatiskt anpassa laddningen efter hur mycket el som används i huset för tillfället.'
+}
+
+else if (slug === 'laddbox-for-villa') {
+  intro = 'För villaägare är en laddbox det säkraste sättet att ladda elbilen hemma.'
+  content = 'Moderna laddboxar erbjuder smart laddning, appstyrning och möjlighet till lastbalansering.'
+}
+
+else if (slug === 'easee-charge-up-recension') {
+  intro = 'Easee Charge Up är en av Sveriges mest populära laddboxar.'
+  content = 'Easee erbjuder smart laddning, appstyrning och stöd för lastbalansering vilket gör den till ett populärt val bland villaägare.'
+}
+
+else if (slug === 'zaptec-go-recension') {
+  intro = 'Zaptec Go är en kompakt och smart laddbox för hemmabruk.'
+  content = 'Zaptec Go erbjuder hög laddkapacitet, modern design och avancerade funktioner för energistyrning.'
+}
+
+else {
+  intro = `Guide om ${title.toLowerCase()}.`
+  content = `Här hittar du information om ${title.toLowerCase()}, installation, kostnader och vanliga frågor.`
+}
 const articleSchema = {
 "@context": "https://schema.org",
 "@type": "Article",
@@ -131,8 +163,8 @@ return ( <main className="max-w-5xl mx-auto px-6 pt-40 pb-20">
   </h1>
 
   <p className="text-xl text-slate-600 leading-relaxed">
-    I denna guide går vi igenom allt du behöver veta om {title.toLowerCase()}.
-  </p>
+  {intro}
+</p>
 
   <section className="mt-16 space-y-8">
 
@@ -141,10 +173,8 @@ return ( <main className="max-w-5xl mx-auto px-6 pt-40 pb-20">
     </h2>
 
     <p className="text-lg text-slate-600 leading-relaxed">
-      Intresset för laddboxar ökar snabbt i Sverige i takt med att fler väljer elbil.
-      För att få en säker och effektiv laddning hemma eller på företaget är det viktigt
-      att välja rätt utrustning och installation.
-    </p>
+  {content}
+</p>
 
     <h2 className="text-3xl font-bold">
       Fördelar
