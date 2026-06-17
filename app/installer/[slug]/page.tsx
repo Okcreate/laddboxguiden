@@ -364,7 +364,38 @@ export default async function InstallerPage({
         </div>
 
       </section>
+<section className="mt-16">
 
+  <h2 className="text-3xl font-bold mb-6">
+    Relaterade guider
+  </h2>
+
+  <div className="grid md:grid-cols-3 gap-6">
+
+    <a
+      href="/topplistor/basta-laddbox-2026"
+      className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition"
+    >
+      Bästa Laddbox 2026
+    </a>
+
+    <a
+      href={`/city/${installer.city?.toLowerCase()}`}
+      className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition"
+    >
+      Installatörer i {installer.city}
+    </a>
+
+    <a
+      href="/blog/vad-kostar-en-laddbox"
+      className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition"
+    >
+      Vad kostar en laddbox?
+    </a>
+
+  </div>
+
+</section>
     </main>
   )
 }
