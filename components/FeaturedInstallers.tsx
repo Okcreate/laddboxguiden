@@ -33,13 +33,15 @@ export default async function FeaturedInstallers() {
         <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {data?.map((installer: any) => (
            <InstallerCard
-              key={installer.id}
-              company_name={installer.company_name}
-              city={installer.city}
-              description={installer.description}
-              logo_url={installer.logo_url}
-              rating={installer.rating}
-              reviews_count={installer.reviews_count} slug={''}/>
+  key={installer.id}
+  company_name={installer.company_name}
+  city={installer.city}
+  description={installer.description}
+  logo_url={installer.logo_url}
+  rating={installer.rating}
+  reviews_count={installer.reviews_count}
+  slug={installer.slug}
+/>
           ))}
         </div>
       </div>
