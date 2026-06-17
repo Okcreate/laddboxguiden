@@ -160,6 +160,54 @@ export default async function InstallerPage({
                 {installer.description}
               </p>
 
+              <div className="mt-12">
+
+  <h3 className="text-2xl font-bold mb-4">
+    Laddboxinstallation i {installer.city}
+  </h3>
+
+  <p className="text-slate-600 text-lg leading-relaxed">
+    Efterfrågan på laddboxar ökar snabbt i {installer.city} när allt fler
+    hushåll och företag väljer elbil. En professionellt installerad
+    laddbox ger snabbare laddning, högre säkerhet och bättre kontroll
+    över energiförbrukningen jämfört med vanliga eluttag.
+  </p>
+
+</div>
+
+<div className="mt-12">
+
+  <h3 className="text-2xl font-bold mb-4">
+    Tjänster
+  </h3>
+
+  <ul className="space-y-3 text-slate-600">
+
+    <li>✓ Installation av laddbox för villa</li>
+    <li>✓ Installation för bostadsrättsföreningar</li>
+    <li>✓ Installation för företag</li>
+    <li>✓ Lastbalansering</li>
+    <li>✓ Hjälp med grön teknik-avdrag</li>
+
+  </ul>
+
+</div>
+
+<div className="mt-12">
+
+  <h3 className="text-2xl font-bold mb-4">
+    Vanliga laddboxar
+  </h3>
+
+  <p className="text-slate-600 text-lg leading-relaxed">
+    Många installatörer arbetar med populära modeller från Easee,
+    Zaptec, Wallbox, Tesla, Charge Amps och andra ledande tillverkare.
+    Valet av laddbox beror på fastighetens förutsättningar och vilka
+    funktioner som önskas.
+  </p>
+
+</div>
+
               <div className="mt-10">
 
                 <h3 className="text-2xl font-bold mb-4">
