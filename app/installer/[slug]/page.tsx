@@ -364,34 +364,38 @@ export default async function InstallerPage({
         </div>
 
       </section>
-<section className="mt-16">
+<section className="max-w-6xl mx-auto px-6 pb-20">
 
-  <h2 className="text-3xl font-bold mb-6">
-    Relaterade guider
-  </h2>
+  <div className="bg-white rounded-3xl p-10 shadow-sm">
 
-  <div className="grid md:grid-cols-3 gap-6">
+    <h3 className="text-2xl font-bold mb-8">
+      Relaterade guider
+    </h3>
 
-    <a
-      href="/topplistor/basta-laddbox-2026"
-      className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition"
-    >
-      Bästa Laddbox 2026
-    </a>
+    <div className="grid md:grid-cols-3 gap-6">
 
-    <a
-      href={`/city/${installer.city?.toLowerCase()}`}
-      className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition"
-    >
-      Installatörer i {installer.city}
-    </a>
+      <a
+        href="/topplistor/basta-laddbox-2026"
+        className="bg-slate-50 rounded-2xl p-6 hover:shadow-md transition"
+      >
+        Bästa Laddbox 2026
+      </a>
 
-    <a
-      href="/blog/vad-kostar-en-laddbox"
-      className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition"
-    >
-      Vad kostar en laddbox?
-    </a>
+      <a
+        href={`/city/${installer.city?.toLowerCase()}`}
+        className="bg-slate-50 rounded-2xl p-6 hover:shadow-md transition"
+      >
+        Installatörer i {installer.city}
+      </a>
+
+      <a
+        href="/blog/vad-kostar-en-laddbox"
+        className="bg-slate-50 rounded-2xl p-6 hover:shadow-md transition"
+      >
+        Vad kostar en laddbox?
+      </a>
+
+    </div>
 
   </div>
 
