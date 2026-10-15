@@ -19,88 +19,85 @@ export default function InstallerCard({
   reviews_count,
   slug,
 }: InstallerCardProps) {
-
   return (
+    <article className="group flex h-full flex-col rounded-3xl border border-slate-200 bg-white p-6 text-slate-900 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-green-200 hover:shadow-xl">
 
-    <div className="group bg-white border border-slate-200 rounded-3xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition duration-300">
-
-      {/* Top */}
+      {/* Företag */}
       <div className="flex items-start gap-4">
-
-        <div className="w-14 h-14 rounded-2xl overflow-hidden bg-white border flex items-center justify-center shrink-0">
-
+        <div className="flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-slate-200 bg-slate-50">
           {logo_url ? (
             <img
               src={logo_url}
-              alt={company_name}
-              className="w-full h-full object-cover"
+              alt={`Logotyp för ${company_name}`}
+              className="h-full w-full object-contain"
             />
           ) : (
-            <div className="w-full h-full bg-gradient-to-br from-green-400 to-green-600" />
+            <div className="h-full w-full bg-gradient-to-br from-green-400 to-green-600" />
           )}
-
         </div>
 
         <div className="min-w-0">
-
-          <h3 className="font-bold text-xl leading-tight">
+          <h3 className="text-xl font-bold leading-tight text-slate-950">
             {company_name}
           </h3>
 
-          <p className="text-slate-500 mt-1 text-sm">
-            📍 {city}
+          <p className="mt-2 text-sm text-slate-600">
+            <span aria-hidden="true">📍</span> {city}
           </p>
-
         </div>
-
       </div>
 
-      {/* Rating */}
-      <div className="flex items-center gap-2 text-sm mt-5">
-
-        <div className="text-yellow-500">
-          ⭐ ⭐ ⭐ ⭐ ⭐
+      {/* Betyg */}
+      <div className="mt-5 flex flex-wrap items-center gap-2">
+        <div
+          className="text-amber-500"
+          aria-label={`Betyg ${rating ?? 4.8} av 5`}
+        >
+          ★★★★★
         </div>
 
-        <span className="text-slate-600">
-          {rating || 4.8}
-          {' '}
-          ({reviews_count || 0} recensioner)
+        <span className="text-sm font-medium text-slate-700">
+          {rating ?? 4.8}
         </span>
 
+        <span className="text-sm text-slate-500">
+          ({reviews_count ?? 0} recensioner)
+        </span>
       </div>
 
-      {/* Description */}
-      <p className="mt-5 text-slate-600 text-sm leading-relaxed line-clamp-2">
+      {/* Beskrivning */}
+      <p className="mt-5 line-clamp-3 text-sm leading-6 text-slate-700">
         {description}
       </p>
 
-      {/* Tags */}
-      <div className="flex flex-wrap gap-2 mt-5">
-
-        <div className="bg-slate-100 rounded-full px-3 py-1 text-xs">
+      {/* Egenskaper */}
+      <div className="mt-5 flex flex-wrap gap-2">
+        <span className="rounded-full bg-slate-100 px-3 py-1.5 text-xs font-medium text-slate-700">
           Easee
-        </div>
+        </span>
 
-        <div className="bg-slate-100 rounded-full px-3 py-1 text-xs">
+        <span className="rounded-full bg-slate-100 px-3 py-1.5 text-xs font-medium text-slate-700">
           Zaptec
-        </div>
+        </span>
 
-        <div className="bg-slate-100 rounded-full px-3 py-1 text-xs">
+        <span className="rounded-full bg-green-50 px-3 py-1.5 text-xs font-medium text-green-800">
           Certifierad
-        </div>
-
+        </span>
       </div>
 
-      {/* Button */}
-      <Link href={`/installer/${slug}`}>
-
-        <button className="w-full mt-6 bg-slate-950 group-hover:bg-green-600 transition text-white py-3 rounded-2xl font-semibold text-sm">
+      {/* Profil */}
+      <div className="mt-auto pt-6">
+        <Link
+          href={`/installer/${slug}`}
+          className="flex w-full items-center justify-center rounded-xl bg-slate-950 px-5 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-green-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-600 focus-visible:ring-offset-2"
+        >
           Visa profil
-        </button>
+          <span className="ml-2 transition-transform group-hover:translate-x-1" aria-hidden="true">
+            →
+          </span>
+        </Link>
+      </div>
 
-      </Link>
-
-    </div>
+    </article>
   )
 }
